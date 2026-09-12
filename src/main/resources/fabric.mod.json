@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "popcorns",
+	"version": "${version}",
+	"name": "Popcorns",
+	"description": "Reuse leftover seeds to... pop popcorn!",
+	"authors": [
+		"Alessandro"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/popcorns/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"it.argo.mc.mods.popcorns.PopcornsMod"
+		],
+		"client": [
+			"it.argo.mc.mods.popcorns.client.PopcornsModClient"
+		],
+		"fabric-datagen": [
+			"it.argo.mc.mods.popcorns.datagen.PopcornsDataGenerator"
+		]
+	},
+	"mixins": [
+		"popcorns.mixins.json",
+		{
+			"config": "popcorns.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

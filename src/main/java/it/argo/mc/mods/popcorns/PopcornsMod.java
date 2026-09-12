@@ -21,7 +21,7 @@ public class PopcornsMod implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Popcorns is heating up!");
+		LOGGER.info("Popcorns are heating up!");
 	}
 
 	/**

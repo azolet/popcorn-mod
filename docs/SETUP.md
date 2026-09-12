@@ -1,0 +1,101 @@
+# Project setup
+
+How this project was scaffolded, what was decided, and how to work with it.
+
+Scaffolded from the official [FabricMC example mod](https://github.com/FabricMC/fabric-example-mod)
+(branch `1.21.11`), following the Fabric documentation for
+[creating a project](https://docs.fabricmc.net/1.21.11/develop/getting-started/creating-a-project),
+[project structure](https://docs.fabricmc.net/1.21.11/develop/getting-started/project-structure) and
+[setting up](https://docs.fabricmc.net/1.21.11/develop/getting-started/setting-up).
+
+## Identity
+
+| | |
+| --- | --- |
+| Mod ID | `popcorns` |
+| Root package | `it.argo.mc.mods.popcorns` |
+| Gradle group | `it.argo.mc.mods` |
+| `rootProject.name` | `popcorns` |
+| Mod version | `0.1.0` (`gradle.properties`) |
+| Asset namespace | `popcorns` |
+
+Whenever the Fabric docs use `example-mod`, `modid` or `com.example`, substitute the values above.
+
+## Toolchain
+
+| | |
+| --- | --- |
+| Minecraft | 1.21.11 |
+| Fabric Loader | 0.19.5 |
+| Fabric API | 0.141.6+1.21.11 |
+| Fabric Loom | 1.17-SNAPSHOT |
+| Gradle | 9.5.1 (via the wrapper) |
+| JDK | 21 — required for 1.21.11 |
+| Mappings | Official Mojang mappings |
+
+All of the Fabric versions are pinned in `gradle.properties`; check
+<https://fabricmc.net/develop> before bumping them.
+
+## Decisions
+
+- **Mojang mappings, not Yarn.** This is the default for the 1.21.11 template and for the docs.
+  Class names are the Mojang ones — `Minecraft` (not `MinecraftClient`),
+  `net.minecraft.resources.Identifier`. Tutorials written against Yarn will need translating.
+- **Split environment source sets** (`splitEnvironmentSourceSets()` in `build.gradle`):
+  `src/main` is common code, `src/client` is client-only. Code that touches rendering, screens or
+  key binds belongs in `src/client`; anything the dedicated server must also run belongs in `src/main`.
+- **Data generation enabled.** `build.gradle` declares
+  `fabricApi { configureDataGeneration() { client = true } }`, which adds the "Data Generation" run
+  configuration. Because `client = true`, the generator entrypoint lives in the client source set.
+- **No example mixins.** The template's sample mixins were removed. Both mixin configs are kept and
+  registered in `fabric.mod.json` with empty lists, and each mixin package is held by a
+  `package-info.java` so the package exists before the first mixin is written.
+
+## Layout
+
+```
+src/main/java/it/argo/mc/mods/popcorns/          common code
+                                      /mixin/    common mixins
+src/main/resources/fabric.mod.json               mod metadata
+                  /popcorns.mixins.json          common mixin config
+                  /assets/popcorns/              textures, models, lang
+src/main/generated/                              runDatagen output (a resource root)
+src/client/java/it/argo/mc/mods/popcorns/client/ client-only code
+                                         /mixin/ client-only mixins
+                                  .../datagen/   data generation entrypoint
+src/client/resources/popcorns.client.mixins.json client mixin config
+```
+
+## Entrypoints
+
+Declared in `src/main/resources/fabric.mod.json`:
+
+| Entrypoint | Class |
+| --- | --- |
+| `main` | `it.argo.mc.mods.popcorns.PopcornsMod` |
+| `client` | `it.argo.mc.mods.popcorns.client.PopcornsModClient` |
+| `fabric-datagen` | `it.argo.mc.mods.popcorns.datagen.PopcornsDataGenerator` |
+
+`PopcornsMod` exposes `MOD_ID`, an SLF4J `LOGGER` named after the mod id, and
+`id(String path)` for building identifiers in the `popcorns` namespace.
+
+## Commands
+
+```bash
+./gradlew build        # build the mod jar into build/libs
+./gradlew runClient    # launch a dev client with the mod loaded
+./gradlew runServer    # launch a dev dedicated server
+./gradlew runDatagen   # run data generation into src/main/generated
+./gradlew genSources   # decompile Minecraft for browsing in the IDE
+```
+
+## Adding a mixin
+
+1. Create the class in `…/popcorns/mixin/` (common) or `…/popcorns/client/mixin/` (client only).
+2. Add its simple name to the `mixins` array of `src/main/resources/popcorns.mixins.json`,
+   or to the `client` array of `src/client/resources/popcorns.client.mixins.json`.
+
+## Bumping versions
+
+Everything lives in `gradle.properties`. After changing `minecraft_version`, also update the
+`minecraft` range in the `depends` block of `fabric.mod.json`, then re-run `./gradlew genSources`.

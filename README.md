@@ -2,10 +2,35 @@
 
 A Minecraft **1.21.11** mod for the **Fabric** loader that lets you reuse leftover seeds to... pop popcorn!
 
+> Status: early scaffold. The mod loads and logs on startup; the popcorn itself is still to come.
+
 ## Requirements
 
-- **JDK 21** (required to develop for Minecraft 1.21.11)
+- **JDK 21** — required to develop for Minecraft 1.21.11
 - IntelliJ IDEA (recommended) or Visual Studio Code with the Gradle for Java extension
+- Fabric API, pulled automatically by Gradle
+
+## Getting started
+
+```bash
+git clone https://github.com/azolet/popcorns-mod.git
+cd popcorns-mod
+./gradlew runClient
+```
+
+Or open the folder in IntelliJ IDEA and let it import the Gradle project — the
+**Minecraft Client**, **Minecraft Server** and **Data Generation** run configurations
+appear once the import finishes.
+
+## Commands
+
+```bash
+./gradlew build        # build the mod jar into build/libs
+./gradlew runClient    # launch a dev client with the mod loaded
+./gradlew runServer    # launch a dev dedicated server
+./gradlew runDatagen   # run data generation into src/main/generated
+./gradlew genSources   # decompile Minecraft sources for browsing in the IDE
+```
 
 ## Project layout
 
@@ -25,19 +50,9 @@ Entrypoints:
 - `client` → `it.argo.mc.mods.popcorns.client.PopcornsModClient`
 - `fabric-datagen` → `it.argo.mc.mods.popcorns.datagen.PopcornsDataGenerator`
 
-## Common commands
-
-```bash
-./gradlew build        # build the mod jar into build/libs
-./gradlew runClient    # launch a dev client with the mod loaded
-./gradlew runServer    # launch a dev dedicated server
-./gradlew runDatagen   # run data generation into src/main/generated
-./gradlew genSources   # decompile Minecraft sources for browsing in the IDE
-```
-
 ## Versions
 
-Pinned in `gradle.properties`; check https://fabricmc.net/develop for updates.
+Pinned in `gradle.properties`; check <https://fabricmc.net/develop> for updates.
 
 | | |
 | --- | --- |
@@ -47,6 +62,11 @@ Pinned in `gradle.properties`; check https://fabricmc.net/develop for updates.
 | Loom | 1.17-SNAPSHOT |
 | Mappings | Official Mojang mappings |
 
+## Documentation
+
+- [`docs/SETUP.md`](docs/SETUP.md) — how the project was scaffolded, the decisions behind it,
+  and how to add mixins or bump versions.
+
 ## License
 
-CC0-1.0 (inherited from the Fabric example mod template — change `LICENSE` and the `license` field in `fabric.mod.json` if you want something else).
+CC0-1.0, inherited from the Fabric example mod template — see [`LICENSE`](LICENSE).

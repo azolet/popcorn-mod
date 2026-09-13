@@ -12,12 +12,12 @@ Scaffolded from the official [FabricMC example mod](https://github.com/FabricMC/
 
 | | |
 | --- | --- |
-| Mod ID | `popcorns` |
-| Root package | `it.argo.mc.mods.popcorns` |
+| Mod ID | `popcorn` |
+| Root package | `it.argo.mc.mods.popcorn` |
 | Gradle group | `it.argo.mc.mods` |
-| `rootProject.name` | `popcorns` |
+| `rootProject.name` | `popcorn` |
 | Mod version | `0.1.0` (`gradle.properties`) |
-| Asset namespace | `popcorns` |
+| Asset namespace | `popcorn` |
 
 Whenever the Fabric docs use `example-mod`, `modid` or `com.example`, substitute the values above.
 
@@ -54,16 +54,16 @@ All of the Fabric versions are pinned in `gradle.properties`; check
 ## Layout
 
 ```
-src/main/java/it/argo/mc/mods/popcorns/          common code
+src/main/java/it/argo/mc/mods/popcorn/          common code
                                       /mixin/    common mixins
 src/main/resources/fabric.mod.json               mod metadata
-                  /popcorns.mixins.json          common mixin config
-                  /assets/popcorns/              textures, models, lang
+                  /popcorn.mixins.json          common mixin config
+                  /assets/popcorn/              textures, models, lang
 src/main/generated/                              runDatagen output (a resource root)
-src/client/java/it/argo/mc/mods/popcorns/client/ client-only code
+src/client/java/it/argo/mc/mods/popcorn/client/ client-only code
                                          /mixin/ client-only mixins
                                   .../datagen/   data generation entrypoint
-src/client/resources/popcorns.client.mixins.json client mixin config
+src/client/resources/popcorn.client.mixins.json client mixin config
 ```
 
 ## Entrypoints
@@ -72,12 +72,12 @@ Declared in `src/main/resources/fabric.mod.json`:
 
 | Entrypoint | Class |
 | --- | --- |
-| `main` | `it.argo.mc.mods.popcorns.PopcornsMod` |
-| `client` | `it.argo.mc.mods.popcorns.client.PopcornsModClient` |
-| `fabric-datagen` | `it.argo.mc.mods.popcorns.datagen.PopcornsDataGenerator` |
+| `main` | `it.argo.mc.mods.popcorn.PopcornMod` |
+| `client` | `it.argo.mc.mods.popcorn.client.PopcornModClient` |
+| `fabric-datagen` | `it.argo.mc.mods.popcorn.datagen.PopcornDataGenerator` |
 
-`PopcornsMod` exposes `MOD_ID`, an SLF4J `LOGGER` named after the mod id, and
-`id(String path)` for building identifiers in the `popcorns` namespace.
+`PopcornMod` exposes `MOD_ID`, an SLF4J `LOGGER` named after the mod id, and
+`id(String path)` for building identifiers in the `popcorn` namespace.
 
 ## Commands
 
@@ -91,28 +91,28 @@ Declared in `src/main/resources/fabric.mod.json`:
 
 ## Adding an item
 
-Items are declared as constants in `PopcornsItems`, which registers each one through its
+Items are declared as constants in `PopcornItems`, which registers each one through its
 `register(name, factory, properties)` helper (`ResourceKey` → `Item.Properties.setId` →
 `Registry.register`). The class is loaded — and its creative-tab hooks installed — by
-`PopcornsItems.initialize()`, called from `PopcornsMod.onInitialize()`.
+`PopcornItems.initialize()`, called from `PopcornMod.onInitialize()`.
 
 Each item also needs, all under `src/main/resources`:
 
 | File | Purpose |
 | --- | --- |
-| `assets/popcorns/items/<name>.json` | Client item definition: which model to use |
-| `assets/popcorns/models/item/<name>.json` | The model itself (`minecraft:item/generated` + a texture layer) |
-| `assets/popcorns/textures/item/<name>.png` | 16×16 texture |
-| `assets/popcorns/lang/en_us.json` | `item.popcorns.<name>` display name |
+| `assets/popcorn/items/<name>.json` | Client item definition: which model to use |
+| `assets/popcorn/models/item/<name>.json` | The model itself (`minecraft:item/generated` + a texture layer) |
+| `assets/popcorn/textures/item/<name>.png` | 16×16 texture |
+| `assets/popcorn/lang/en_us.json` | `item.popcorn.<name>` display name |
 
-Recipes go in `data/popcorns/recipe/` and their recipe-book unlocks in
-`data/popcorns/advancement/recipes/`. Note both directory names are singular — that changed in 1.21.
+Recipes go in `data/popcorn/recipe/` and their recipe-book unlocks in
+`data/popcorn/advancement/recipes/`. Note both directory names are singular — that changed in 1.21.
 
 ## Adding a mixin
 
-1. Create the class in `…/popcorns/mixin/` (common) or `…/popcorns/client/mixin/` (client only).
-2. Add its simple name to the `mixins` array of `src/main/resources/popcorns.mixins.json`,
-   or to the `client` array of `src/client/resources/popcorns.client.mixins.json`.
+1. Create the class in `…/popcorn/mixin/` (common) or `…/popcorn/client/mixin/` (client only).
+2. Add its simple name to the `mixins` array of `src/main/resources/popcorn.mixins.json`,
+   or to the `client` array of `src/client/resources/popcorn.client.mixins.json`.
 
 ## Bumping versions
 

@@ -1,4 +1,4 @@
-package it.argo.mc.mods.popcorns;
+package it.argo.mc.mods.popcorn;
 
 import java.util.function.Function;
 
@@ -15,7 +15,7 @@ import net.minecraft.world.item.Item;
 /**
  * Every item this mod adds, and the helper that registers them.
  */
-public final class PopcornsItems {
+public final class PopcornItems {
 	/** A light snack: two hunger points, cookie-tier saturation. */
 	public static final FoodProperties POPCORN_FOOD = new FoodProperties.Builder()
 			.nutrition(2)
@@ -26,18 +26,18 @@ public final class PopcornsItems {
 	public static final Item POPCORN = register("popcorn", Item::new,
 			new Item.Properties().food(POPCORN_FOOD));
 
-	private PopcornsItems() {
+	private PopcornItems() {
 	}
 
 	public static <T extends Item> T register(String name, Function<Item.Properties, T> factory, Item.Properties properties) {
-		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, PopcornsMod.id(name));
+		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, PopcornMod.id(name));
 		T item = factory.apply(properties.setId(key));
 		return Registry.register(BuiltInRegistries.ITEM, key, item);
 	}
 
 	/**
 	 * Loads this class (registering every item in it) and hangs the items off
-	 * their creative tabs. Called from {@link PopcornsMod#onInitialize()}.
+	 * their creative tabs. Called from {@link PopcornMod#onInitialize()}.
 	 */
 	public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS)

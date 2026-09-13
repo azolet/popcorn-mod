@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "popcorns:popcorn_from_smoking"
+        "recipe": "popcorn:popcorn"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "popcorns:popcorn_from_smoking"
+      "popcorn:popcorn"
     ]
   }
 }

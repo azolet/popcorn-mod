@@ -1,8 +1,8 @@
 {
 	"required": true,
-	"package": "it.argo.mc.mods.popcorns.mixin",
+	"package": "it.argo.mc.mods.popcorn.client.mixin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [
+	"client": [
 	],
 	"injectors": {
 		"defaultRequire": 1

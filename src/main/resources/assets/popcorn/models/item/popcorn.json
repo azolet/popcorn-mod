@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "popcorns:item/popcorn"
+    "layer0": "popcorn:item/popcorn"
   }
 }

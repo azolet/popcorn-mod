@@ -1,4 +1,4 @@
-# Popcorns
+# Popcorn
 
 A Minecraft **1.21.11** mod for the **Fabric** loader that lets you reuse leftover seeds to... pop popcorn!
 
@@ -6,7 +6,7 @@ A Minecraft **1.21.11** mod for the **Fabric** loader that lets you reuse leftov
 
 ## Content
 
-**Popcorn** (`popcorns:popcorn`) — an edible snack worth 2 hunger points and 0.3 saturation,
+**Popcorn** (`popcorn:popcorn`) — an edible snack worth 2 hunger points and 0.3 saturation,
 listed in the Food & Drinks creative tab.
 
 | Cooked in | Input | Output | Time | XP |
@@ -25,8 +25,8 @@ Both recipes unlock in the recipe book as soon as you pick up wheat seeds.
 ## Getting started
 
 ```bash
-git clone https://github.com/azolet/popcorns-mod.git
-cd popcorns-mod
+git clone https://github.com/azolet/popcorn-mod.git
+cd popcorn-mod
 ./gradlew runClient
 ```
 
@@ -51,16 +51,16 @@ appear once the import finishes.
 | `src/main/java` | Common code, runs on both client and dedicated server |
 | `src/client/java` | Client-only code (rendering, UI, key binds) |
 | `src/main/resources/fabric.mod.json` | Mod metadata, entrypoints, dependencies |
-| `src/main/resources/popcorns.mixins.json` | Common mixin config |
-| `src/client/resources/popcorns.client.mixins.json` | Client-only mixin config |
-| `src/main/resources/assets/popcorns/` | Textures, models, lang files (namespace `popcorns`) |
+| `src/main/resources/popcorn.mixins.json` | Common mixin config |
+| `src/client/resources/popcorn.client.mixins.json` | Client-only mixin config |
+| `src/main/resources/assets/popcorn/` | Textures, models, lang files (namespace `popcorn`) |
 | `src/main/generated/` | Output of data generation (created by `runDatagen`) |
 
 Entrypoints:
 
-- `main` → `it.argo.mc.mods.popcorns.PopcornsMod`
-- `client` → `it.argo.mc.mods.popcorns.client.PopcornsModClient`
-- `fabric-datagen` → `it.argo.mc.mods.popcorns.datagen.PopcornsDataGenerator`
+- `main` → `it.argo.mc.mods.popcorn.PopcornMod`
+- `client` → `it.argo.mc.mods.popcorn.client.PopcornModClient`
+- `fabric-datagen` → `it.argo.mc.mods.popcorn.datagen.PopcornDataGenerator`
 
 ## Versions
 

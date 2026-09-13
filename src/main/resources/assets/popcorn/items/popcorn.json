@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "popcorns:item/popcorn"
+    "model": "popcorn:item/popcorn"
   }
 }

@@ -24,6 +24,7 @@ public class PopcornMod implements ModInitializer {
 		LOGGER.info("Popcorn is heating up!");
 
 		PopcornItems.initialize();
+		PopcornSounds.initialize();
 	}
 
 	/**

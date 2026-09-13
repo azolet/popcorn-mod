@@ -108,6 +108,24 @@ Each item also needs, all under `src/main/resources`:
 Recipes go in `data/popcorn/recipe/` and their recipe-book unlocks in
 `data/popcorn/advancement/recipes/`. Note both directory names are singular — that changed in 1.21.
 
+## Adding a sound
+
+Sound events are registered in `PopcornSounds` (`SoundEvent.createVariableRangeEvent` into
+`BuiltInRegistries.SOUND_EVENT`), and `PopcornSounds.initialize()` is called from
+`PopcornMod.onInitialize()` so registration happens while the registries are still open — a sound
+first touched at runtime would come too late.
+
+Each event also needs, under `src/main/resources`:
+
+| File | Purpose |
+| --- | --- |
+| `assets/popcorn/sounds.json` | Maps the event name to its ogg files, category and subtitle key |
+| `assets/popcorn/sounds/<name>.ogg` | Mono Ogg Vorbis. Mono matters: stereo files are not positional |
+| `assets/popcorn/lang/en_us.json` | `subtitles.popcorn.<name>` caption |
+
+Play one server-side with `level.playSound(null, pos, event, SoundSource.BLOCKS, volume, pitch)` —
+a null player means everyone nearby hears it.
+
 ## Adding a mixin
 
 1. Create the class in `…/popcorn/mixin/` (common) or `…/popcorn/client/mixin/` (client only).

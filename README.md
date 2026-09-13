@@ -16,6 +16,9 @@ listed in the Food & Drinks creative tab.
 
 Both recipes unlock in the recipe book as soon as you pick up wheat seeds.
 
+While a lit furnace or smoker has wheat seeds in its input slot it pops, roughly once
+every two seconds, at a random pitch.
+
 ## Requirements
 
 - **JDK 21** — required to develop for Minecraft 1.21.11

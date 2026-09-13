@@ -2,7 +2,19 @@
 
 A Minecraft **1.21.11** mod for the **Fabric** loader that lets you reuse leftover seeds to... pop popcorn!
 
-> Status: early scaffold. The mod loads and logs on startup; the popcorn itself is still to come.
+> Status: early days. The popcorn exists and can be cooked; more to come.
+
+## Content
+
+**Popcorn** (`popcorns:popcorn`) — an edible snack worth 2 hunger points and 0.3 saturation,
+listed in the Food & Drinks creative tab.
+
+| Cooked in | Input | Output | Time | XP |
+| --- | --- | --- | --- | --- |
+| Furnace | 1 × Wheat Seeds | 1 × Popcorn | 10s (200 ticks) | 0.1 |
+| Smoker | 1 × Wheat Seeds | 1 × Popcorn | 5s (100 ticks) | 0.1 |
+
+Both recipes unlock in the recipe book as soon as you pick up wheat seeds.
 
 ## Requirements
 

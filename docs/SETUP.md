@@ -89,6 +89,25 @@ Declared in `src/main/resources/fabric.mod.json`:
 ./gradlew genSources   # decompile Minecraft for browsing in the IDE
 ```
 
+## Adding an item
+
+Items are declared as constants in `PopcornsItems`, which registers each one through its
+`register(name, factory, properties)` helper (`ResourceKey` → `Item.Properties.setId` →
+`Registry.register`). The class is loaded — and its creative-tab hooks installed — by
+`PopcornsItems.initialize()`, called from `PopcornsMod.onInitialize()`.
+
+Each item also needs, all under `src/main/resources`:
+
+| File | Purpose |
+| --- | --- |
+| `assets/popcorns/items/<name>.json` | Client item definition: which model to use |
+| `assets/popcorns/models/item/<name>.json` | The model itself (`minecraft:item/generated` + a texture layer) |
+| `assets/popcorns/textures/item/<name>.png` | 16×16 texture |
+| `assets/popcorns/lang/en_us.json` | `item.popcorns.<name>` display name |
+
+Recipes go in `data/popcorns/recipe/` and their recipe-book unlocks in
+`data/popcorns/advancement/recipes/`. Note both directory names are singular — that changed in 1.21.
+
 ## Adding a mixin
 
 1. Create the class in `…/popcorns/mixin/` (common) or `…/popcorns/client/mixin/` (client only).

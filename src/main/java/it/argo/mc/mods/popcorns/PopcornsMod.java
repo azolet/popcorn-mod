@@ -22,6 +22,8 @@ public class PopcornsMod implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Popcorns are heating up!");
+
+		PopcornsItems.initialize();
 	}
 
 	/**

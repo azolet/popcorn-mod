@@ -23,10 +23,15 @@ public final class PopcornItems {
 			.saturationModifier(0.3F)
 			.build();
 
-	/** A bucketful is three popcorn's worth, so it eats like a small meal. */
+	/**
+	 * A bucket costs eight popcorn, so it has to earn the trip to the crafting
+	 * table: steak-tier nutrition, the best saturation in the mod, and edible
+	 * even on a full hunger bar — you can always find room for popcorn.
+	 */
 	public static final FoodProperties POPCORN_BUCKET_FOOD = new FoodProperties.Builder()
-			.nutrition(6)
-			.saturationModifier(0.6F)
+			.nutrition(8)
+			.saturationModifier(0.8F)
+			.alwaysEdible()
 			.build();
 
 	/** Wheat seeds, cooked in a furnace or a smoker. */

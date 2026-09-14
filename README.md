@@ -39,7 +39,7 @@ d = red/green/black     b = empty popcorn
 
 So five paper and one dye make an empty bucket, and eight popcorn fill one.
 
-A filled bucket restores 6 hunger and 0.6 saturation. Right-click the air to eat it (the bucket
+A filled bucket restores 8 hunger with 0.8 saturation and can be eaten on a full hunger bar. Right-click the air to eat it (the bucket
 goes with it), or right-click a block to stand it on top. Up to four buckets fit on one block;
 right-click a pile with an empty hand to take one back, the way a cake loses a slice.
 

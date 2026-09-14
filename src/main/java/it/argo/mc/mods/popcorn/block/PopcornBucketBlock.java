@@ -48,8 +48,14 @@ public class PopcornBucketBlock extends Block {
 			{{1, 2}, {8, 1}, {2, 9}, {9, 8}},
 	};
 
-	private static final int BUCKET_WIDTH = 6;
-	private static final int BUCKET_HEIGHT = 9;
+	/** The striped carton. */
+	private static final int BOX_WIDTH = 6;
+	private static final int BOX_HEIGHT = 6;
+
+	/** The mound of popcorn on top, which spills over the carton's rim. */
+	private static final int HEAP_OVERHANG = 1;
+	private static final int HEAP_HEIGHT = 6;
+
 	private static final VoxelShape[] SHAPES = buildShapes();
 
 	public PopcornBucketBlock(Properties properties) {
@@ -64,8 +70,14 @@ public class PopcornBucketBlock extends Block {
 			VoxelShape shape = Shapes.empty();
 
 			for (int[] spot : LAYOUTS[i]) {
-				shape = Shapes.or(shape, Block.box(spot[0], 0, spot[1],
-						spot[0] + BUCKET_WIDTH, BUCKET_HEIGHT, spot[1] + BUCKET_WIDTH));
+				int x = spot[0];
+				int z = spot[1];
+
+				shape = Shapes.or(shape,
+						Block.box(x, 0, z, x + BOX_WIDTH, BOX_HEIGHT, z + BOX_WIDTH),
+						Block.box(x - HEAP_OVERHANG, BOX_HEIGHT, z - HEAP_OVERHANG,
+								x + BOX_WIDTH + HEAP_OVERHANG, BOX_HEIGHT + HEAP_HEIGHT,
+								z + BOX_WIDTH + HEAP_OVERHANG));
 			}
 
 			shapes[i] = shape;

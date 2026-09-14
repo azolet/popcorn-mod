@@ -130,7 +130,7 @@ public class PopcornBucketBlock extends Block {
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
 			BlockHitResult hit) {
-		if (level.isClientSide) {
+		if (level.isClientSide()) {
 			return InteractionResult.SUCCESS;
 		}
 

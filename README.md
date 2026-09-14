@@ -23,13 +23,21 @@ every two seconds, at a random pitch.
 
 Fold a bucket from paper and a dye, fill it with popcorn, then eat it or set it down.
 
-| Recipe | Ingredients | Result |
-| --- | --- | --- |
-| Bucket | 1 × Paper + 1 × Red / Green / Black Dye | Empty popcorn bucket |
-| Fill | 1 × Empty bucket + 3 × Popcorn | Filled popcorn bucket |
+Both recipes are shaped and need a crafting table.
 
-Both are shapeless and use at most four slots, so they work in the 2×2 inventory grid — no
-crafting table needed.
+```
+Empty bucket            Filled bucket
+
+  s d s                   p p p
+  s s s                   p b p
+                          p p p
+
+s = paper               p = popcorn
+d = red/green/black     b = empty popcorn
+    dye                     bucket
+```
+
+So five paper and one dye make an empty bucket, and eight popcorn fill one.
 
 A filled bucket restores 6 hunger and 0.6 saturation. Right-click the air to eat it (the bucket
 goes with it), or right-click a block to stand it on top. Up to four buckets fit on one block;

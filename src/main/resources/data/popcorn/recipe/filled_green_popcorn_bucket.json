@@ -1,12 +1,15 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "filled_popcorn_bucket",
-  "ingredients": [
-    "popcorn:green_popcorn_bucket",
-    "popcorn:popcorn",
-    "popcorn:popcorn",
-    "popcorn:popcorn"
+  "key": {
+    "p": "popcorn:popcorn",
+    "b": "popcorn:green_popcorn_bucket"
+  },
+  "pattern": [
+    "ppp",
+    "pbp",
+    "ppp"
   ],
   "result": {
     "count": 1,

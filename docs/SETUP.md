@@ -108,6 +108,13 @@ Each item also needs, all under `src/main/resources`:
 Recipes go in `data/popcorn/recipe/` and their recipe-book unlocks in
 `data/popcorn/advancement/recipes/`. Note both directory names are singular — that changed in 1.21.
 
+Before adding a shaped recipe, check it against vanilla's: two shaped recipes collide when their
+trimmed patterns have the same dimensions and each cell accepts the same item (mirrored patterns
+count too). Vanilla's own recipe JSON is readable straight out of the Minecraft jar in
+`.gradle/loom-cache/`, so the check can be scripted over all ~1470 of them rather than guessed at.
+The bucket patterns were checked that way; the near neighbours are `map` (3×3 paper around a
+compass) and the stained-glass family (3×3 of something around a dye).
+
 ## Adding a sound
 
 Sound events are registered in `PopcornSounds` (`SoundEvent.createVariableRangeEvent` into

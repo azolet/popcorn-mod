@@ -1,10 +1,14 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "popcorn_bucket",
-  "ingredients": [
-    "minecraft:paper",
-    "minecraft:black_dye"
+  "key": {
+    "s": "minecraft:paper",
+    "d": "minecraft:black_dye"
+  },
+  "pattern": [
+    "sds",
+    "sss"
   ],
   "result": {
     "count": 1,

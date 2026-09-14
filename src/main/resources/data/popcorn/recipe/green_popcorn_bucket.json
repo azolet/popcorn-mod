@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "popcorn_bucket",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:green_dye"
+  ],
+  "result": {
+    "count": 1,
+    "id": "popcorn:green_popcorn_bucket"
+  }
+}

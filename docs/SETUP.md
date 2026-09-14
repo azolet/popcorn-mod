@@ -126,6 +126,35 @@ Each event also needs, under `src/main/resources`:
 Play one server-side with `level.playSound(null, pos, event, SoundSource.BLOCKS, volume, pitch)` —
 a null player means everyone nearby hears it.
 
+## Adding a block
+
+Blocks are registered in `PopcornBlocks`: build `BlockBehaviour.Properties`, call `.setId(blockKey)`,
+construct the block, register a `BlockItem` under the *same* name, then register the block itself.
+`useBlockDescriptionPrefix()` on the item makes both share the `block.popcorn.<name>` translation key.
+
+`PopcornBucketBlock` is the worked example — a `buckets` `IntegerProperty` (1–4), `canBeReplaced` +
+`getStateForPlacement` to stack another bucket on the pile, `canSurvive` + `updateShape` to require
+a solid block underneath, and `useWithoutItem` to hand one back.
+
+Each block needs, under `src/main/resources`:
+
+| File | Purpose |
+| --- | --- |
+| `assets/popcorn/blockstates/<name>.json` | Maps each state to a model |
+| `assets/popcorn/models/block/<name>_<n>.json` | The models themselves |
+| `assets/popcorn/models/item/<name>.json` + `assets/popcorn/items/<name>.json` | The inventory icon |
+| `assets/popcorn/textures/block/*.png` | Block textures |
+| `data/popcorn/loot_table/blocks/<name>.json` | What it drops — **`loot_table`, singular** |
+| `data/popcorn/recipe/<name>.json` | How it is crafted |
+
+The bucket models share four `template_popcorn_bucket_<n>.json` parents that place 1–4 boxes and
+reference `#side`, `#top` and `#bottom`; each colour only overrides those three textures. The box
+positions in those templates must stay in step with `PopcornBucketBlock.LAYOUTS`, which builds the
+collision shapes from the same numbers.
+
+Regenerating all of that by hand is tedious — the JSON was written by a throwaway Python script,
+which is the sane way to add a fourth colour.
+
 ## Adding a mixin
 
 1. Create the class in `…/popcorn/mixin/` (common) or `…/popcorn/client/mixin/` (client only).

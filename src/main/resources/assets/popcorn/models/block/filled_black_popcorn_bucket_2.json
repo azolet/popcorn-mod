@@ -1,0 +1,9 @@
+{
+  "parent": "popcorn:block/template_popcorn_bucket_2",
+  "textures": {
+    "side": "popcorn:block/black_popcorn_bucket_side",
+    "top": "popcorn:block/black_popcorn_bucket_top",
+    "bottom": "popcorn:block/black_popcorn_bucket_bottom",
+    "particle": "popcorn:block/black_popcorn_bucket_side"
+  }
+}

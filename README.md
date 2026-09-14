@@ -19,6 +19,25 @@ Both recipes unlock in the recipe book as soon as you pick up wheat seeds.
 While a lit furnace or smoker has wheat seeds in its input slot it pops, roughly once
 every two seconds, at a random pitch.
 
+### Popcorn buckets
+
+Fold a bucket from paper and a dye, fill it with popcorn, then eat it or set it down.
+
+| Recipe | Ingredients | Result |
+| --- | --- | --- |
+| Bucket | 1 × Paper + 1 × Red / Green / Black Dye | Empty popcorn bucket |
+| Fill | 1 × Empty bucket + 3 × Popcorn | Filled popcorn bucket |
+
+Both are shapeless and use at most four slots, so they work in the 2×2 inventory grid — no
+crafting table needed.
+
+A filled bucket restores 6 hunger and 0.6 saturation. Right-click the air to eat it (the bucket
+goes with it), or right-click a block to stand it on top. Up to four buckets fit on one block;
+right-click a pile with an empty hand to take one back, the way a cake loses a slice.
+
+The three colours are a red-and-white striped box, a creeper-faced green one and a black one with
+enderman eyes.
+
 ## Requirements
 
 - **JDK 21** — required to develop for Minecraft 1.21.11

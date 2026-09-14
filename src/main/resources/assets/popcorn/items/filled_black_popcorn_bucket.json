@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "popcorn:item/filled_black_popcorn_bucket"
+  }
+}

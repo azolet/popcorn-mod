@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "popcorn:item/black_popcorn_bucket"
+  }
+}

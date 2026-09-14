@@ -1,5 +1,6 @@
 package it.argo.mc.mods.popcorn;
 
+import java.util.List;
 import java.util.function.Function;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -22,9 +23,23 @@ public final class PopcornItems {
 			.saturationModifier(0.3F)
 			.build();
 
+	/** A bucketful is three popcorn's worth, so it eats like a small meal. */
+	public static final FoodProperties POPCORN_BUCKET_FOOD = new FoodProperties.Builder()
+			.nutrition(6)
+			.saturationModifier(0.6F)
+			.build();
+
 	/** Wheat seeds, cooked in a furnace or a smoker. */
 	public static final Item POPCORN = register("popcorn", Item::new,
 			new Item.Properties().food(POPCORN_FOOD));
+
+	// Empty buckets, folded from paper and dyed. Fill one with popcorn to eat it.
+	public static final Item RED_POPCORN_BUCKET = register("red_popcorn_bucket", Item::new, new Item.Properties());
+	public static final Item GREEN_POPCORN_BUCKET = register("green_popcorn_bucket", Item::new, new Item.Properties());
+	public static final Item BLACK_POPCORN_BUCKET = register("black_popcorn_bucket", Item::new, new Item.Properties());
+
+	public static final List<Item> EMPTY_BUCKETS = List.of(
+			RED_POPCORN_BUCKET, GREEN_POPCORN_BUCKET, BLACK_POPCORN_BUCKET);
 
 	private PopcornItems() {
 	}
@@ -42,5 +57,11 @@ public final class PopcornItems {
 	public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS)
 				.register(entries -> entries.accept(POPCORN));
+
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
+			for (Item bucket : EMPTY_BUCKETS) {
+				entries.accept(bucket);
+			}
+		});
 	}
 }

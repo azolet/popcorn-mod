@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "filled_popcorn_bucket",
+  "ingredients": [
+    "popcorn:green_popcorn_bucket",
+    "popcorn:popcorn",
+    "popcorn:popcorn",
+    "popcorn:popcorn"
+  ],
+  "result": {
+    "count": 1,
+    "id": "popcorn:filled_green_popcorn_bucket"
+  }
+}

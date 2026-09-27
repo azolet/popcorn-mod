@@ -42,19 +42,18 @@ public class PopcornBucketBlock extends Block {
 	 * corner in sixteenths of a block. These must match the block models.
 	 */
 	public static final int[][][] LAYOUTS = {
-			{{5, 5}},
-			{{2, 6}, {8, 4}},
-			{{2, 7}, {8, 8}, {5, 1}},
-			{{1, 2}, {8, 1}, {2, 9}, {9, 8}},
+			{{4, 4}},
+			{{0, 4}, {9, 4}},
+			{{0, 0}, {9, 0}, {4, 9}},
+			{{0, 0}, {9, 0}, {0, 9}, {9, 9}},
 	};
 
-	/** The striped carton. */
-	private static final int BOX_WIDTH = 6;
-	private static final int BOX_HEIGHT = 6;
-
-	/** The mound of popcorn on top, which spills over the carton's rim. */
-	private static final int HEAP_OVERHANG = 1;
-	private static final int HEAP_HEIGHT = 6;
+	/**
+	 * Each bucket is one head-sized cube. Seven wide rather than eight so that
+	 * four of them fit side by side with a gap: two coplanar faces would z-fight.
+	 */
+	private static final int BUCKET_WIDTH = 7;
+	private static final int BUCKET_HEIGHT = 8;
 
 	private static final VoxelShape[] SHAPES = buildShapes();
 
@@ -73,11 +72,8 @@ public class PopcornBucketBlock extends Block {
 				int x = spot[0];
 				int z = spot[1];
 
-				shape = Shapes.or(shape,
-						Block.box(x, 0, z, x + BOX_WIDTH, BOX_HEIGHT, z + BOX_WIDTH),
-						Block.box(x - HEAP_OVERHANG, BOX_HEIGHT, z - HEAP_OVERHANG,
-								x + BOX_WIDTH + HEAP_OVERHANG, BOX_HEIGHT + HEAP_HEIGHT,
-								z + BOX_WIDTH + HEAP_OVERHANG));
+				shape = Shapes.or(shape, Block.box(x, 0, z,
+						x + BUCKET_WIDTH, BUCKET_HEIGHT, z + BUCKET_WIDTH));
 			}
 
 			shapes[i] = shape;

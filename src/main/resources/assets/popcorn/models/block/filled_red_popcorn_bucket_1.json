@@ -2,8 +2,8 @@
   "parent": "popcorn:block/template_popcorn_bucket_1",
   "textures": {
     "side": "popcorn:block/red_popcorn_bucket_side",
+    "top": "popcorn:block/popcorn_top",
     "bottom": "popcorn:block/red_popcorn_bucket_bottom",
-    "heap": "popcorn:block/popcorn_heap",
     "particle": "popcorn:block/red_popcorn_bucket_side"
   }
 }

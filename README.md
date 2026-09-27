@@ -43,8 +43,8 @@ A filled bucket restores 8 hunger with 0.8 saturation and can be eaten on a full
 goes with it), or right-click a block to stand it on top. Up to four buckets fit on one block;
 right-click a pile with an empty hand to take one back, the way a cake loses a slice.
 
-The three colours are a red-and-white striped box, a creeper-faced green one and a black one with
-enderman eyes.
+Each bucket is a cube the size of a player head — red-and-white stripes, a creeper face, or
+enderman eyes on the sides, popcorn on top. Four of them sit on one block in a 2×2.
 
 ## Requirements
 

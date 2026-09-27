@@ -43,8 +43,9 @@ A filled bucket restores 8 hunger with 0.8 saturation and can be eaten on a full
 goes with it), or right-click a block to stand it on top. Up to four buckets fit on one block;
 right-click a pile with an empty hand to take one back, the way a cake loses a slice.
 
-Each bucket is a cube the size of a player head — red-and-white stripes, a creeper face, or
-enderman eyes on the sides, popcorn on top. Four of them sit on one block in a 2×2.
+Each bucket is a carton the size of a player head — red-and-white stripes, a creeper face, or
+enderman eyes on the walls — with the popcorn heaped inside, two pixels below the rim. The walls
+have thickness, so you can see into an empty one. Four fit on a block in a 2×2.
 
 ## Requirements
 

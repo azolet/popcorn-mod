@@ -96,10 +96,14 @@ you fill in three properties in `gradle.properties`, taken from the Modrinth pag
 Minecraft version in use:
 
 ```properties
-iris_version=<version>
-sodium_version=<version>
-shaderpack=complementary-reimagined:<version>
+iris_version=1.10.7+1.21.11-fabric
+sodium_version=mc1.21.11-0.8.14-fabric
+shaderpack=bsl-shaders:10.1.8
 ```
+
+Iris and Sodium are versioned in lockstep: if the client refuses to start complaining about a
+Sodium version, take the Iris release's stated Sodium requirement from its Modrinth page rather
+than guessing.
 
 With them set, `./gradlew runClient` installs Iris and Sodium as `modLocalRuntime` dependencies —
 so they never reach the published jar or the mod's dependency list — copies the pack into

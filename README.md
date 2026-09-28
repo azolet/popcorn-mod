@@ -23,6 +23,21 @@ every two seconds, at a random pitch.
 
 Fold a bucket from paper and a dye, fill it with popcorn, then eat it or set it down.
 
+### Caramel popcorn
+
+Popcorn turned in something sweet, worth 3 hunger and 0.5 saturation:
+
+| Recipe | Ingredients | Result |
+| --- | --- | --- |
+| With sugar | 1 × Popcorn + 1 × Sugar | 1 × Caramel Popcorn |
+| With honey | 3 × Popcorn + 1 × Honey Bottle | 3 × Caramel Popcorn |
+
+Both are shapeless and fit the 2×2 inventory grid; the honey recipe hands the empty bottle back.
+Fill a bucket with caramel popcorn instead of plain and you get a caramel popcorn bucket, worth
+10 hunger and 0.9 saturation.
+
+### Crafting the buckets
+
 Both recipes are shaped and need a crafting table.
 
 ```

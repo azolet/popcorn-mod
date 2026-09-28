@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "filled_popcorn_bucket",
+  "key": {
+    "p": "popcorn:caramel_popcorn",
+    "b": "popcorn:red_popcorn_bucket"
+  },
+  "pattern": [
+    "ppp",
+    "pbp",
+    "ppp"
+  ],
+  "result": {
+    "count": 1,
+    "id": "popcorn:filled_red_caramel_popcorn_bucket"
+  }
+}

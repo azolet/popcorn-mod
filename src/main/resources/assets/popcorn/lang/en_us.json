@@ -6,5 +6,9 @@
   "item.popcorn.green_popcorn_bucket": "Empty Green Popcorn Bucket",
   "block.popcorn.filled_green_popcorn_bucket": "Green Popcorn Bucket",
   "item.popcorn.black_popcorn_bucket": "Empty Black Popcorn Bucket",
-  "block.popcorn.filled_black_popcorn_bucket": "Black Popcorn Bucket"
+  "block.popcorn.filled_black_popcorn_bucket": "Black Popcorn Bucket",
+  "item.popcorn.caramel_popcorn": "Caramel Popcorn",
+  "block.popcorn.filled_red_caramel_popcorn_bucket": "Red Caramel Popcorn Bucket",
+  "block.popcorn.filled_green_caramel_popcorn_bucket": "Green Caramel Popcorn Bucket",
+  "block.popcorn.filled_black_caramel_popcorn_bucket": "Black Caramel Popcorn Bucket"
 }

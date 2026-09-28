@@ -10,6 +10,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -23,17 +24,29 @@ import net.minecraft.world.level.material.PushReaction;
  * table and the edible item you get back when you take one off the pile.
  */
 public final class PopcornBlocks {
-	public static final Block FILLED_RED_POPCORN_BUCKET = register("filled_red_popcorn_bucket");
-	public static final Block FILLED_GREEN_POPCORN_BUCKET = register("filled_green_popcorn_bucket");
-	public static final Block FILLED_BLACK_POPCORN_BUCKET = register("filled_black_popcorn_bucket");
+	public static final Block FILLED_RED_POPCORN_BUCKET =
+			register("filled_red_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
+	public static final Block FILLED_GREEN_POPCORN_BUCKET =
+			register("filled_green_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
+	public static final Block FILLED_BLACK_POPCORN_BUCKET =
+			register("filled_black_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
+
+	public static final Block FILLED_RED_CARAMEL_POPCORN_BUCKET =
+			register("filled_red_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
+	public static final Block FILLED_GREEN_CARAMEL_POPCORN_BUCKET =
+			register("filled_green_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
+	public static final Block FILLED_BLACK_CARAMEL_POPCORN_BUCKET =
+			register("filled_black_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
 
 	public static final List<Block> FILLED_BUCKETS = List.of(
-			FILLED_RED_POPCORN_BUCKET, FILLED_GREEN_POPCORN_BUCKET, FILLED_BLACK_POPCORN_BUCKET);
+			FILLED_RED_POPCORN_BUCKET, FILLED_GREEN_POPCORN_BUCKET, FILLED_BLACK_POPCORN_BUCKET,
+			FILLED_RED_CARAMEL_POPCORN_BUCKET, FILLED_GREEN_CARAMEL_POPCORN_BUCKET,
+			FILLED_BLACK_CARAMEL_POPCORN_BUCKET);
 
 	private PopcornBlocks() {
 	}
 
-	private static Block register(String name) {
+	private static Block register(String name, FoodProperties food) {
 		ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, PopcornMod.id(name));
 		ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, PopcornMod.id(name));
 
@@ -52,7 +65,7 @@ public final class PopcornBlocks {
 				.setId(itemKey)
 				.useBlockDescriptionPrefix()
 				.stacksTo(16)
-				.food(PopcornItems.POPCORN_BUCKET_FOOD)));
+				.food(food)));
 
 		return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
 	}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "buckets=1": {
+      "model": "popcorn:block/filled_green_caramel_popcorn_bucket_1"
+    },
+    "buckets=2": {
+      "model": "popcorn:block/filled_green_caramel_popcorn_bucket_2"
+    },
+    "buckets=3": {
+      "model": "popcorn:block/filled_green_caramel_popcorn_bucket_3"
+    },
+    "buckets=4": {
+      "model": "popcorn:block/filled_green_caramel_popcorn_bucket_4"
+    }
+  }
+}

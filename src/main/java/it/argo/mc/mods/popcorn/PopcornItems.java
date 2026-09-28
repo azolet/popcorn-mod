@@ -34,9 +34,26 @@ public final class PopcornItems {
 			.alwaysEdible()
 			.build();
 
+	/** Popcorn turned in sugar or honey: sweeter, and a little more filling. */
+	public static final FoodProperties CARAMEL_POPCORN_FOOD = new FoodProperties.Builder()
+			.nutrition(3)
+			.saturationModifier(0.5F)
+			.build();
+
+	/** A bucket of the sweet stuff, worth the extra sugar it costs. */
+	public static final FoodProperties CARAMEL_POPCORN_BUCKET_FOOD = new FoodProperties.Builder()
+			.nutrition(10)
+			.saturationModifier(0.9F)
+			.alwaysEdible()
+			.build();
+
 	/** Wheat seeds, cooked in a furnace or a smoker. */
 	public static final Item POPCORN = register("popcorn", Item::new,
 			new Item.Properties().food(POPCORN_FOOD));
+
+	/** Popcorn plus sugar, or popcorn plus a bottle of honey. */
+	public static final Item CARAMEL_POPCORN = register("caramel_popcorn", Item::new,
+			new Item.Properties().food(CARAMEL_POPCORN_FOOD));
 
 	// Empty buckets, folded from paper and dyed. Fill one with popcorn to eat it.
 	public static final Item RED_POPCORN_BUCKET = register("red_popcorn_bucket", Item::new, new Item.Properties());
@@ -60,8 +77,10 @@ public final class PopcornItems {
 	 * their creative tabs. Called from {@link PopcornMod#onInitialize()}.
 	 */
 	public static void initialize() {
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS)
-				.register(entries -> entries.accept(POPCORN));
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
+			entries.accept(POPCORN);
+			entries.accept(CARAMEL_POPCORN);
+		});
 
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
 			for (Item bucket : EMPTY_BUCKETS) {

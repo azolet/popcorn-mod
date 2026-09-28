@@ -1,0 +1,14 @@
+{
+  "item.argo_popcorn.popcorn": "Popcorn",
+  "subtitles.argo_popcorn.popcorn_pop": "Popcorn pops",
+  "item.argo_popcorn.red_popcorn_bucket": "Empty Red Popcorn Bucket",
+  "block.argo_popcorn.filled_red_popcorn_bucket": "Red Popcorn Bucket",
+  "item.argo_popcorn.green_popcorn_bucket": "Empty Green Popcorn Bucket",
+  "block.argo_popcorn.filled_green_popcorn_bucket": "Green Popcorn Bucket",
+  "item.argo_popcorn.black_popcorn_bucket": "Empty Black Popcorn Bucket",
+  "block.argo_popcorn.filled_black_popcorn_bucket": "Black Popcorn Bucket",
+  "item.argo_popcorn.caramel_popcorn": "Caramel Popcorn",
+  "block.argo_popcorn.filled_red_caramel_popcorn_bucket": "Red Caramel Popcorn Bucket",
+  "block.argo_popcorn.filled_green_caramel_popcorn_bucket": "Green Caramel Popcorn Bucket",
+  "block.argo_popcorn.filled_black_caramel_popcorn_bucket": "Black Caramel Popcorn Bucket"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "minecraft:wheat_seeds",
+  "result": {
+    "id": "argo_popcorn:popcorn"
+  }
+}

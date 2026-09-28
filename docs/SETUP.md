@@ -58,7 +58,7 @@ src/main/java/it/argo/mc/mods/popcorn/          common code
                                       /mixin/    common mixins
 src/main/resources/fabric.mod.json               mod metadata
                   /popcorn.mixins.json          common mixin config
-                  /assets/popcorn/              textures, models, lang
+                  /assets/argo_popcorn/              textures, models, lang
 src/main/generated/                              runDatagen output (a resource root)
 src/client/java/it/argo/mc/mods/popcorn/client/ client-only code
                                          /mixin/ client-only mixins
@@ -147,10 +147,10 @@ Each item also needs, all under `src/main/resources`:
 
 | File | Purpose |
 | --- | --- |
-| `assets/popcorn/items/<name>.json` | Client item definition: which model to use |
-| `assets/popcorn/models/item/<name>.json` | The model itself (`minecraft:item/generated` + a texture layer) |
-| `assets/popcorn/textures/item/<name>.png` | 16×16 texture |
-| `assets/popcorn/lang/en_us.json` | `item.popcorn.<name>` display name |
+| `assets/argo_popcorn/items/<name>.json` | Client item definition: which model to use |
+| `assets/argo_popcorn/models/item/<name>.json` | The model itself (`minecraft:item/generated` + a texture layer) |
+| `assets/argo_popcorn/textures/item/<name>.png` | 16×16 texture |
+| `assets/argo_popcorn/lang/en_us.json` | `item.argo_popcorn.<name>` display name |
 
 Recipes go in `data/popcorn/recipe/` and their recipe-book unlocks in
 `data/popcorn/advancement/recipes/`. Note both directory names are singular — that changed in 1.21.
@@ -173,9 +173,9 @@ Each event also needs, under `src/main/resources`:
 
 | File | Purpose |
 | --- | --- |
-| `assets/popcorn/sounds.json` | Maps the event name to its ogg files, category and subtitle key |
-| `assets/popcorn/sounds/<name>.ogg` | Mono Ogg Vorbis. Mono matters: stereo files are not positional |
-| `assets/popcorn/lang/en_us.json` | `subtitles.popcorn.<name>` caption |
+| `assets/argo_popcorn/sounds.json` | Maps the event name to its ogg files, category and subtitle key |
+| `assets/argo_popcorn/sounds/<name>.ogg` | Mono Ogg Vorbis. Mono matters: stereo files are not positional |
+| `assets/argo_popcorn/lang/en_us.json` | `subtitles.argo_popcorn.<name>` caption |
 
 Play one server-side with `level.playSound(null, pos, event, SoundSource.BLOCKS, volume, pitch)` —
 a null player means everyone nearby hears it.
@@ -184,7 +184,7 @@ a null player means everyone nearby hears it.
 
 Blocks are registered in `PopcornBlocks`: build `BlockBehaviour.Properties`, call `.setId(blockKey)`,
 construct the block, register a `BlockItem` under the *same* name, then register the block itself.
-`useBlockDescriptionPrefix()` on the item makes both share the `block.popcorn.<name>` translation key.
+`useBlockDescriptionPrefix()` on the item makes both share the `block.argo_popcorn.<name>` translation key.
 
 `PopcornBucketBlock` is the worked example — a `buckets` `IntegerProperty` (1–4), `canBeReplaced` +
 `getStateForPlacement` to stack another bucket on the pile, `canSurvive` + `updateShape` to require
@@ -194,10 +194,10 @@ Each block needs, under `src/main/resources`:
 
 | File | Purpose |
 | --- | --- |
-| `assets/popcorn/blockstates/<name>.json` | Maps each state to a model |
-| `assets/popcorn/models/block/<name>_<n>.json` | The models themselves |
-| `assets/popcorn/models/item/<name>.json` + `assets/popcorn/items/<name>.json` | The inventory icon |
-| `assets/popcorn/textures/block/*.png` | Block textures |
+| `assets/argo_popcorn/blockstates/<name>.json` | Maps each state to a model |
+| `assets/argo_popcorn/models/block/<name>_<n>.json` | The models themselves |
+| `assets/argo_popcorn/models/item/<name>.json` + `assets/argo_popcorn/items/<name>.json` | The inventory icon |
+| `assets/argo_popcorn/textures/block/*.png` | Block textures |
 | `data/popcorn/loot_table/blocks/<name>.json` | What it drops — **`loot_table`, singular** |
 | `data/popcorn/recipe/<name>.json` | How it is crafted |
 

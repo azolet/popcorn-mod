@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "argo_popcorn:item/caramel_popcorn"
+  }
+}

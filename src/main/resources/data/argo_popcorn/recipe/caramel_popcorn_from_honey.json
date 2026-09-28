@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "caramel_popcorn",
+  "ingredients": [
+    "argo_popcorn:popcorn",
+    "argo_popcorn:popcorn",
+    "argo_popcorn:popcorn",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "count": 3,
+    "id": "argo_popcorn:caramel_popcorn"
+  }
+}

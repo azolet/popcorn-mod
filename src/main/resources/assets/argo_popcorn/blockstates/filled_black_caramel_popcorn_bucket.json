@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "buckets=1": {
+      "model": "argo_popcorn:block/filled_black_caramel_popcorn_bucket_1"
+    },
+    "buckets=2": {
+      "model": "argo_popcorn:block/filled_black_caramel_popcorn_bucket_2"
+    },
+    "buckets=3": {
+      "model": "argo_popcorn:block/filled_black_caramel_popcorn_bucket_3"
+    },
+    "buckets=4": {
+      "model": "argo_popcorn:block/filled_black_caramel_popcorn_bucket_4"
+    }
+  }
+}

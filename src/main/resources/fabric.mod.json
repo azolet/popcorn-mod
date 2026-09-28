@@ -1,14 +1,19 @@
 {
 	"schemaVersion": 1,
-	"id": "popcorn",
+	"id": "argo_popcorn",
 	"version": "${version}",
 	"name": "Popcorn",
-	"description": "Reuse leftover seeds to... pop popcorn!",
+	"description": "Cook leftover wheat seeds into popcorn in a furnace or a smoker — listen for it popping. Caramelise it with sugar or honey, and serve it in paper buckets you can set down four to a block and take one at a time.",
 	"authors": [
-		"Alessandro"
+		"azolet"
 	],
-	"license": "CC0-1.0",
-	"icon": "assets/popcorn/icon.png",
+	"contact": {
+		"homepage": "https://github.com/azolet/popcorn-mod",
+		"sources": "https://github.com/azolet/popcorn-mod",
+		"issues": "https://github.com/azolet/popcorn-mod/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/argo_popcorn/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -22,9 +27,9 @@
 		]
 	},
 	"mixins": [
-		"popcorn.mixins.json",
+		"argo_popcorn.mixins.json",
 		{
-			"config": "popcorn.client.mixins.json",
+			"config": "argo_popcorn.client.mixins.json",
 			"environment": "client"
 		}
 	],

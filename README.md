@@ -6,7 +6,7 @@ A Minecraft **1.21.11** mod for the **Fabric** loader that lets you reuse leftov
 
 ## Content
 
-**Popcorn** (`popcorn:popcorn`) — an edible snack worth 2 hunger points and 0.3 saturation,
+**Popcorn** (`argo_popcorn:popcorn`) — an edible snack worth 2 hunger points and 0.3 saturation,
 listed in the Food & Drinks creative tab.
 
 | Cooked in | Input | Output | Time | XP |
@@ -99,7 +99,7 @@ appear once the import finishes.
 | `src/main/resources/fabric.mod.json` | Mod metadata, entrypoints, dependencies |
 | `src/main/resources/popcorn.mixins.json` | Common mixin config |
 | `src/client/resources/popcorn.client.mixins.json` | Client-only mixin config |
-| `src/main/resources/assets/popcorn/` | Textures, models, lang files (namespace `popcorn`) |
+| `src/main/resources/assets/argo_popcorn/` | Textures, models, lang files (namespace `popcorn`) |
 | `src/main/generated/` | Output of data generation (created by `runDatagen`) |
 
 Entrypoints:
@@ -127,4 +127,4 @@ Pinned in `gradle.properties`; check <https://fabricmc.net/develop> for updates.
 
 ## License
 
-CC0-1.0, inherited from the Fabric example mod template — see [`LICENSE`](LICENSE).
+MIT — see [`LICENSE`](LICENSE).

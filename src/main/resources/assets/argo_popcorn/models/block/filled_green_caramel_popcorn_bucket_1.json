@@ -1,0 +1,10 @@
+{
+  "parent": "argo_popcorn:block/template_popcorn_bucket_1",
+  "textures": {
+    "side": "argo_popcorn:block/green_popcorn_bucket_side",
+    "inner": "argo_popcorn:block/green_popcorn_bucket_inner",
+    "bottom": "argo_popcorn:block/green_popcorn_bucket_bottom",
+    "top": "argo_popcorn:block/caramel_popcorn_top",
+    "particle": "argo_popcorn:block/green_popcorn_bucket_side"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "popcorn_bucket",
+  "key": {
+    "s": "minecraft:paper",
+    "d": "minecraft:black_dye"
+  },
+  "pattern": [
+    "sds",
+    "sss"
+  ],
+  "result": {
+    "count": 1,
+    "id": "argo_popcorn:black_popcorn_bucket"
+  }
+}

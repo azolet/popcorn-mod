@@ -1,0 +1,11 @@
+{
+  "popcorn_pop": {
+    "category": "block",
+    "subtitle": "subtitles.argo_popcorn.popcorn_pop",
+    "sounds": [
+      "argo_popcorn:popcorn_pop1",
+      "argo_popcorn:popcorn_pop2",
+      "argo_popcorn:popcorn_pop3"
+    ]
+  }
+}

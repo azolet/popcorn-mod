@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "popcorn_bucket",
+  "key": {
+    "s": "minecraft:paper",
+    "d": "minecraft:red_dye"
+  },
+  "pattern": [
+    "sds",
+    "sss"
+  ],
+  "result": {
+    "count": 1,
+    "id": "argo_popcorn:red_popcorn_bucket"
+  }
+}

@@ -42,7 +42,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"popcorn" {
+		"argo_popcorn" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

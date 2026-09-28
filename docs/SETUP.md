@@ -115,11 +115,17 @@ GET https://api.modrinth.com/v2/version/<version_id>
 Iris 1.10.7 pins Sodium `mc1.21.11-0.8.7-fabric` this way. Re-run those two calls whenever Iris is
 bumped, and move both properties together.
 
-With them set, `./gradlew runClient` installs Iris and Sodium as `modLocalRuntime` dependencies —
-so they never reach the published jar or the mod's dependency list — copies the pack into
+With them set, `./gradlew runClient` copies Iris and Sodium into `run/mods/`, copies the pack into
 `run/shaderpacks/`, and writes `shaderPack` and `enableShaders` into `run/config/iris.properties`.
 With them unset, nothing changes. The Modrinth repository is scoped with `exclusiveContent` to the
 `maven.modrinth` group, so no other dependency can ever be resolved from it.
+
+**Install them into `run/mods/`, not as `modLocalRuntime` dependencies.** Iris nests `jcpp`,
+`glsl-transformer` and `antlr4-runtime` inside its own jar. Loom's remapping of a classpath mod
+dependency drops the `jars` entry from `fabric.mod.json`, so those libraries are never loaded and
+the client dies on `NoClassDefFoundError: org/anarres/cpp/LexerException` the moment Iris reads a
+shader pack. Dropped into the mods folder, the jar stays intact and Fabric Loader unpacks the
+nested libraries — and remaps the mod for the dev environment — by itself.
 
 The shader pack is a zip rather than a jar, which is why it uses its own `shaderpacks`
 configuration and the `@zip` artifact notation instead of sitting on the classpath. Note that

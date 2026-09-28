@@ -27,9 +27,15 @@ repositories {
 
 // A shader pack is a zip, not a jar, so it gets its own configuration and is
 // copied into the run directory rather than put on the classpath.
+// Iris, Sodium and the shader pack for the development client. Both are copied
+// into run/ as ordinary files rather than put on the classpath: Iris nests jcpp,
+// glsl-transformer and antlr inside its own jar, and those survive only when
+// Fabric Loader unpacks the jar itself. A remapped classpath mod loses them.
+//
 // Gradle 9 no longer creates a configuration from a bare name inside the
-// configurations block, so create it explicitly. Named in the plural to keep it
-// distinct from the 'shaderpack' property that selects which pack to fetch.
+// configurations block, so create them explicitly. 'shaderpacks' is plural to
+// stay distinct from the 'shaderpack' property that picks which pack to fetch.
+configurations.create('devmods')
 configurations.create('shaderpacks')
 
 loom {
@@ -62,18 +68,32 @@ dependencies {
 
 	// Optional: run the dev client with shaders. Set iris_version, sodium_version
 	// and shaderpack in gradle.properties to switch this on; with them unset the
-	// build is exactly as it was. modLocalRuntime keeps these out of the published
-	// jar and out of the mod's dependencies — they are dev tooling, not dependencies.
+	// build is exactly as it was. These never touch the compile classpath or the
+	// published jar — they are dev tooling, not dependencies of the mod.
 	if (project.hasProperty('iris_version')) {
-		modLocalRuntime "maven.modrinth:iris:${project.iris_version}"
+		add('devmods', "maven.modrinth:iris:${project.iris_version}")
 	}
 
 	if (project.hasProperty('sodium_version')) {
-		modLocalRuntime "maven.modrinth:sodium:${project.sodium_version}"
+		add('devmods', "maven.modrinth:sodium:${project.sodium_version}")
 	}
 
 	if (project.hasProperty('shaderpack')) {
 		add('shaderpacks', "maven.modrinth:${project.shaderpack}@zip")
+	}
+}
+
+// Installs Iris and Sodium into run/mods, replacing whatever was there from a
+// previous version so the two never pile up.
+def installDevMods = tasks.register('installDevMods', Copy) {
+	from configurations.devmods
+	into layout.projectDirectory.dir('run/mods')
+
+	doFirst {
+		delete fileTree(layout.projectDirectory.dir('run/mods')) {
+			include 'iris-*.jar'
+			include 'sodium-*.jar'
+		}
 	}
 }
 
@@ -103,7 +123,7 @@ def installShaderpack = tasks.register('installShaderpack', Copy) {
 }
 
 tasks.named('runClient') {
-	dependsOn installShaderpack
+	dependsOn installDevMods, installShaderpack
 }
 
 processResources {

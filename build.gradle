@@ -27,9 +27,10 @@ repositories {
 
 // A shader pack is a zip, not a jar, so it gets its own configuration and is
 // copied into the run directory rather than put on the classpath.
-configurations {
-	shaderpack
-}
+// Gradle 9 no longer creates a configuration from a bare name inside the
+// configurations block, so create it explicitly. Named in the plural to keep it
+// distinct from the 'shaderpack' property that selects which pack to fetch.
+configurations.create('shaderpacks')
 
 loom {
 	splitEnvironmentSourceSets()
@@ -72,18 +73,18 @@ dependencies {
 	}
 
 	if (project.hasProperty('shaderpack')) {
-		shaderpack "maven.modrinth:${project.shaderpack}@zip"
+		add('shaderpacks', "maven.modrinth:${project.shaderpack}@zip")
 	}
 }
 
 // Drops the shader pack into run/shaderpacks and points Iris at it, so that
 // ./gradlew runClient comes up with shaders already on.
 def installShaderpack = tasks.register('installShaderpack', Copy) {
-	from configurations.shaderpack
+	from configurations.shaderpacks
 	into layout.projectDirectory.dir('run/shaderpacks')
 
 	doLast {
-		def pack = configurations.shaderpack.files.find { true }
+		def pack = configurations.shaderpacks.files.find { true }
 
 		if (pack != null) {
 			def config = layout.projectDirectory.file('run/config/iris.properties').asFile

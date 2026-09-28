@@ -111,8 +111,11 @@ so they never reach the published jar or the mod's dependency list — copies th
 With them unset, nothing changes. The Modrinth repository is scoped with `exclusiveContent` to the
 `maven.modrinth` group, so no other dependency can ever be resolved from it.
 
-The shader pack is a zip rather than a jar, which is why it uses its own `shaderpack` configuration
-and the `@zip` artifact notation instead of sitting on the classpath.
+The shader pack is a zip rather than a jar, which is why it uses its own `shaderpacks`
+configuration and the `@zip` artifact notation instead of sitting on the classpath. Note that
+this project is on Gradle 9, where `configurations { name }` no longer creates a configuration
+from a bare name — it has to be `configurations.create('name')`, and dependencies are added
+with `add('name', ...)` rather than a dynamic method.
 
 Shaders are worth having on for any work on block models: they change how ambient occlusion and
 the lit rim of the popcorn bucket read, which flat vanilla lighting hides.

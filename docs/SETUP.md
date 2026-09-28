@@ -101,9 +101,19 @@ sodium_version=mc1.21.11-0.8.14-fabric
 shaderpack=bsl-shaders:10.1.8
 ```
 
-Iris and Sodium are versioned in lockstep: if the client refuses to start complaining about a
-Sodium version, take the Iris release's stated Sodium requirement from its Modrinth page rather
-than guessing.
+**Do not pick the Sodium version by "newest".** Sodium declares which Iris versions it breaks, so
+a newer Sodium than the one Iris was built against stops the client at load with "Some of your mods
+are incompatible". Take the version Iris itself requires:
+
+```
+GET https://api.modrinth.com/v2/project/iris/version?loaders=["fabric"]&game_versions=["<mc>"]
+      -> the wanted release's dependencies[].version_id
+GET https://api.modrinth.com/v2/version/<version_id>
+      -> version_number, which is the Sodium to pin
+```
+
+Iris 1.10.7 pins Sodium `mc1.21.11-0.8.7-fabric` this way. Re-run those two calls whenever Iris is
+bumped, and move both properties together.
 
 With them set, `./gradlew runClient` installs Iris and Sodium as `modLocalRuntime` dependencies —
 so they never reach the published jar or the mod's dependency list — copies the pack into

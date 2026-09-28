@@ -9,6 +9,26 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+
+	// Iris, Sodium and shader packs for the development client. Scoped to the
+	// maven.modrinth group, so nothing else is ever resolved from here.
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = 'Modrinth'
+				url = 'https://api.modrinth.com/maven'
+			}
+		}
+		filter {
+			includeGroup 'maven.modrinth'
+		}
+	}
+}
+
+// A shader pack is a zip, not a jar, so it gets its own configuration and is
+// copied into the run directory rather than put on the classpath.
+configurations {
+	shaderpack
 }
 
 loom {
@@ -38,6 +58,51 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Optional: run the dev client with shaders. Set iris_version, sodium_version
+	// and shaderpack in gradle.properties to switch this on; with them unset the
+	// build is exactly as it was. modLocalRuntime keeps these out of the published
+	// jar and out of the mod's dependencies — they are dev tooling, not dependencies.
+	if (project.hasProperty('iris_version')) {
+		modLocalRuntime "maven.modrinth:iris:${project.iris_version}"
+	}
+
+	if (project.hasProperty('sodium_version')) {
+		modLocalRuntime "maven.modrinth:sodium:${project.sodium_version}"
+	}
+
+	if (project.hasProperty('shaderpack')) {
+		shaderpack "maven.modrinth:${project.shaderpack}@zip"
+	}
+}
+
+// Drops the shader pack into run/shaderpacks and points Iris at it, so that
+// ./gradlew runClient comes up with shaders already on.
+def installShaderpack = tasks.register('installShaderpack', Copy) {
+	from configurations.shaderpack
+	into layout.projectDirectory.dir('run/shaderpacks')
+
+	doLast {
+		def pack = configurations.shaderpack.files.find { true }
+
+		if (pack != null) {
+			def config = layout.projectDirectory.file('run/config/iris.properties').asFile
+			config.parentFile.mkdirs()
+			def props = new Properties()
+
+			if (config.exists()) {
+				config.withInputStream { props.load(it) }
+			}
+
+			props.setProperty('shaderPack', pack.name)
+			props.setProperty('enableShaders', 'true')
+			config.withOutputStream { props.store(it, 'shader pack selected by the installShaderpack task') }
+		}
+	}
+}
+
+tasks.named('runClient') {
+	dependsOn installShaderpack
 }
 
 processResources {

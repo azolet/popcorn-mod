@@ -89,6 +89,30 @@ Declared in `src/main/resources/fabric.mod.json`:
 ./gradlew genSources   # decompile Minecraft for browsing in the IDE
 ```
 
+## Running the dev client with shaders
+
+`build.gradle` can pull Iris, Sodium and a shader pack into the development client. It is off until
+you fill in three properties in `gradle.properties`, taken from the Modrinth pages for the
+Minecraft version in use:
+
+```properties
+iris_version=<version>
+sodium_version=<version>
+shaderpack=complementary-reimagined:<version>
+```
+
+With them set, `./gradlew runClient` installs Iris and Sodium as `modLocalRuntime` dependencies —
+so they never reach the published jar or the mod's dependency list — copies the pack into
+`run/shaderpacks/`, and writes `shaderPack` and `enableShaders` into `run/config/iris.properties`.
+With them unset, nothing changes. The Modrinth repository is scoped with `exclusiveContent` to the
+`maven.modrinth` group, so no other dependency can ever be resolved from it.
+
+The shader pack is a zip rather than a jar, which is why it uses its own `shaderpack` configuration
+and the `@zip` artifact notation instead of sitting on the classpath.
+
+Shaders are worth having on for any work on block models: they change how ambient occlusion and
+the lit rim of the popcorn bucket read, which flat vanilla lighting hides.
+
 ## Adding an item
 
 Items are declared as constants in `PopcornItems`, which registers each one through its

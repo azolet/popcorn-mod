@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -17,8 +18,11 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -38,11 +42,18 @@ public class PopcornBucketBlock extends Block {
 	public static final IntegerProperty BUCKETS = IntegerProperty.create("buckets", 1, MAX_BUCKETS);
 
 	/**
+	 * Which way a single bucket faces, in sixteenths of a turn, as player heads
+	 * do. The models cover it with four baked angles times four blockstate
+	 * rotations; piles of two or more ignore it and keep their arrangement.
+	 */
+	public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
+
+	/**
 	 * Where each bucket stands, indexed by (count - 1), as the x/z of its lower
 	 * corner in sixteenths of a block. These must match the block models.
 	 */
-	public static final int[][][] LAYOUTS = {
-			{{4, 4}},
+	public static final double[][][] LAYOUTS = {
+			{{4.5, 4.5}},
 			{{0, 4}, {9, 4}},
 			{{0, 0}, {9, 0}, {4, 9}},
 			{{0, 0}, {9, 0}, {0, 9}, {9, 9}},
@@ -59,7 +70,7 @@ public class PopcornBucketBlock extends Block {
 
 	public PopcornBucketBlock(Properties properties) {
 		super(properties);
-		registerDefaultState(stateDefinition.any().setValue(BUCKETS, 1));
+		registerDefaultState(stateDefinition.any().setValue(BUCKETS, 1).setValue(ROTATION, 0));
 	}
 
 	private static VoxelShape[] buildShapes() {
@@ -68,9 +79,9 @@ public class PopcornBucketBlock extends Block {
 		for (int i = 0; i < LAYOUTS.length; i++) {
 			VoxelShape shape = Shapes.empty();
 
-			for (int[] spot : LAYOUTS[i]) {
-				int x = spot[0];
-				int z = spot[1];
+			for (double[] spot : LAYOUTS[i]) {
+				double x = spot[0];
+				double z = spot[1];
 
 				shape = Shapes.or(shape, Block.box(x, 0, z,
 						x + BUCKET_WIDTH, BUCKET_HEIGHT, z + BUCKET_WIDTH));
@@ -89,7 +100,7 @@ public class PopcornBucketBlock extends Block {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(BUCKETS);
+		builder.add(BUCKETS, ROTATION);
 	}
 
 	@Override
@@ -129,10 +140,24 @@ public class PopcornBucketBlock extends Block {
 		BlockState existing = context.getLevel().getBlockState(context.getClickedPos());
 
 		if (existing.is(this)) {
+			// adding to a pile keeps the rotation the first bucket was placed with
 			return existing.setValue(BUCKETS, Math.min(MAX_BUCKETS, existing.getValue(BUCKETS) + 1));
 		}
 
-		return super.getStateForPlacement(context);
+		// face the player, the way a head placed on the floor does
+		int facing = Mth.floor((double) (context.getRotation() * 16.0F / 360.0F) + 0.5D) & 15;
+
+		return super.getStateForPlacement(context).setValue(ROTATION, facing);
+	}
+
+	@Override
+	protected BlockState rotate(BlockState state, Rotation rotation) {
+		return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
+	}
+
+	@Override
+	protected BlockState mirror(BlockState state, Mirror mirror) {
+		return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
 	}
 
 	@Override

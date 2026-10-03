@@ -209,6 +209,31 @@ collision shapes from the same numbers.
 Regenerating all of that by hand is tedious — the JSON was written by a throwaway Python script,
 which is the sane way to add a fourth colour.
 
+## Rotating a block like a head
+
+`PopcornBucketBlock` carries `BlockStateProperties.ROTATION_16` and sets it from the player's yaw
+on placement, exactly as a floor skull does. Heads can face any of sixteen ways because they are
+drawn by a block entity renderer; a plain block model cannot, so this is done entirely in data:
+
+- a model element may be rotated only by **-45, -22.5, 0, 22.5 or 45 degrees**, around one axis;
+- a blockstate variant may add only **y = 0, 90, 180 or 270**.
+
+Four baked angles times four blockstate rotations covers all sixteen facings. For facing `r`,
+take `turns = (r + 1) / 4` — integer division, and **do not** take the modulo before subtracting —
+then `angle = 22.5r - 90·turns`, which always lands on one of 0, 22.5, 45 or -22.5, with
+`y = 90·turns mod 360`. The 67.5° case is the one that forces -22.5 into the set.
+
+Two things to keep in mind:
+
+- the rotated element's origin must be the bucket's own centre, and the bucket must sit centred in
+  the block (hence `4.5` rather than `4` in `LAYOUTS[0]`), or it drifts half a pixel per quarter turn;
+- only a single bucket rotates. A pile of two or more would overlap its neighbours once turned —
+  7 wide becomes 9.9 across the diagonal, wider than the 9 of spacing — so those variants match on
+  `buckets=N` alone and ignore the rotation. Blockstate variant keys are partial matches, which is
+  what makes that possible.
+
+The collision shape stays axis-aligned for every facing, as vanilla skulls do.
+
 ## Adding a mixin
 
 1. Create the class in `…/popcorn/mixin/` (common) or `…/popcorn/client/mixin/` (client only).

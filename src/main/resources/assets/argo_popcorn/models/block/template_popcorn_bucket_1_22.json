@@ -29,6 +29,11 @@
           "uv": [0, 0, 1, 16],
           "texture": "#side"
         }
+      },
+      "rotation": {
+        "origin": [8.0, 8, 8.0],
+        "axis": "y",
+        "angle": 22.5
       }
     },
     {
@@ -59,6 +64,11 @@
           "uv": [0, 0, 1, 16],
           "texture": "#side"
         }
+      },
+      "rotation": {
+        "origin": [8.0, 8, 8.0],
+        "axis": "y",
+        "angle": 22.5
       }
     },
     {
@@ -81,6 +91,11 @@
           "uv": [0, 0, 16, 1],
           "texture": "#bottom"
         }
+      },
+      "rotation": {
+        "origin": [8.0, 8, 8.0],
+        "axis": "y",
+        "angle": 22.5
       }
     },
     {
@@ -103,6 +118,11 @@
           "uv": [0, 0, 16, 1],
           "texture": "#bottom"
         }
+      },
+      "rotation": {
+        "origin": [8.0, 8, 8.0],
+        "axis": "y",
+        "angle": 22.5
       }
     },
     {
@@ -117,6 +137,11 @@
           "uv": [0, 0, 16, 16],
           "texture": "#bottom"
         }
+      },
+      "rotation": {
+        "origin": [8.0, 8, 8.0],
+        "axis": "y",
+        "angle": 22.5
       }
     }
   ]

@@ -1,7 +1,64 @@
 {
   "variants": {
-    "buckets=1": {
+    "buckets=1,rotation=0": {
       "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1"
+    },
+    "buckets=1,rotation=1": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_22"
+    },
+    "buckets=1,rotation=2": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_45"
+    },
+    "buckets=1,rotation=3": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_m22",
+      "y": 90
+    },
+    "buckets=1,rotation=4": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1",
+      "y": 90
+    },
+    "buckets=1,rotation=5": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_22",
+      "y": 90
+    },
+    "buckets=1,rotation=6": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_45",
+      "y": 90
+    },
+    "buckets=1,rotation=7": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_m22",
+      "y": 180
+    },
+    "buckets=1,rotation=8": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1",
+      "y": 180
+    },
+    "buckets=1,rotation=9": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_22",
+      "y": 180
+    },
+    "buckets=1,rotation=10": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_45",
+      "y": 180
+    },
+    "buckets=1,rotation=11": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_m22",
+      "y": 270
+    },
+    "buckets=1,rotation=12": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1",
+      "y": 270
+    },
+    "buckets=1,rotation=13": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_22",
+      "y": 270
+    },
+    "buckets=1,rotation=14": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_45",
+      "y": 270
+    },
+    "buckets=1,rotation=15": {
+      "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_1_m22"
     },
     "buckets=2": {
       "model": "argo_popcorn:block/filled_green_caramel_popcorn_bucket_2"

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "argo_popcorn:block/filled_green_popcorn_bucket_1"
+    "model": "argo_popcorn:item/filled_green_popcorn_bucket"
   }
 }

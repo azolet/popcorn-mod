@@ -3,6 +3,7 @@
 	"package": "it.argo.mc.mods.popcorn.client.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
+		"ItemInHandRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

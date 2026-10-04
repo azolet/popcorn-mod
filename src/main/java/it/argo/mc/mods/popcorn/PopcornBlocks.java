@@ -14,6 +14,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -26,24 +27,36 @@ import net.minecraft.world.level.material.PushReaction;
 public final class PopcornBlocks {
 	public static final Block FILLED_RED_POPCORN_BUCKET =
 			register("filled_red_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
-	public static final Block FILLED_GREEN_POPCORN_BUCKET =
-			register("filled_green_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
-	public static final Block FILLED_BLACK_POPCORN_BUCKET =
-			register("filled_black_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
+	// 0.1.0 ships the red bucket only. The green and black ones are ready —
+	// their models, textures and recipes are parked under disabled/ in the repo.
+	// public static final Block FILLED_GREEN_POPCORN_BUCKET =
+	// 		register("filled_green_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
+	// public static final Block FILLED_BLACK_POPCORN_BUCKET =
+	// 		register("filled_black_popcorn_bucket", PopcornItems.POPCORN_BUCKET_FOOD);
 
 	public static final Block FILLED_RED_CARAMEL_POPCORN_BUCKET =
 			register("filled_red_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
-	public static final Block FILLED_GREEN_CARAMEL_POPCORN_BUCKET =
-			register("filled_green_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
-	public static final Block FILLED_BLACK_CARAMEL_POPCORN_BUCKET =
-			register("filled_black_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
+	// public static final Block FILLED_GREEN_CARAMEL_POPCORN_BUCKET =
+	// 		register("filled_green_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
+	// public static final Block FILLED_BLACK_CARAMEL_POPCORN_BUCKET =
+	// 		register("filled_black_caramel_popcorn_bucket", PopcornItems.CARAMEL_POPCORN_BUCKET_FOOD);
 
 	public static final List<Block> FILLED_BUCKETS = List.of(
-			FILLED_RED_POPCORN_BUCKET, FILLED_GREEN_POPCORN_BUCKET, FILLED_BLACK_POPCORN_BUCKET,
-			FILLED_RED_CARAMEL_POPCORN_BUCKET, FILLED_GREEN_CARAMEL_POPCORN_BUCKET,
-			FILLED_BLACK_CARAMEL_POPCORN_BUCKET);
+			FILLED_RED_POPCORN_BUCKET,
+			FILLED_RED_CARAMEL_POPCORN_BUCKET);
+			// FILLED_GREEN_POPCORN_BUCKET, FILLED_BLACK_POPCORN_BUCKET,
+			// FILLED_GREEN_CARAMEL_POPCORN_BUCKET, FILLED_BLACK_CARAMEL_POPCORN_BUCKET
 
 	private PopcornBlocks() {
+	}
+
+	/**
+	 * Whether this is one of the six filled buckets — the edible block items.
+	 * Both the holding pose and the crumb particles key off this.
+	 */
+	public static boolean isFilledBucket(ItemStack stack) {
+		return stack.getItem() instanceof BlockItem blockItem
+				&& FILLED_BUCKETS.contains(blockItem.getBlock());
 	}
 
 	private static Block register(String name, FoodProperties food) {

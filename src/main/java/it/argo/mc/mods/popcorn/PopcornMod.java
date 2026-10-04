@@ -26,6 +26,7 @@ public class PopcornMod implements ModInitializer {
 		PopcornItems.initialize();
 		PopcornBlocks.initialize();
 		PopcornSounds.initialize();
+		PopcornParticles.initialize();
 	}
 
 	/**

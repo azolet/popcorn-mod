@@ -3,7 +3,8 @@
 	"package": "it.argo.mc.mods.popcorn.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"AbstractFurnaceBlockEntityMixin"
+		"AbstractFurnaceBlockEntityMixin",
+		"LivingEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

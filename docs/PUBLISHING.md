@@ -31,7 +31,7 @@ The Modrinth slug is separate and can stay `popcorn` if it is free.
 | Field | Value |
 | --- | --- |
 | Name | Popcorn |
-| Summary | Cook leftover wheat seeds into popcorn, caramelise it, and serve it in paper buckets. |
+| Summary | Wheat seeds go in, popcorn comes out, and the furnace makes a racket about it. Caramel and cinema buckets included. |
 | Categories | Food, Decoration, Equipment |
 | Environment | Client **and** server, both required (`"environment": "*"`, and the block and recipes are server-side) |
 | Loader | Fabric |
@@ -40,8 +40,14 @@ The Modrinth slug is separate and can stay `popcorn` if it is free.
 | Icon | `docs/modrinth-icon.png` (512×512) |
 | Source / Issues | https://github.com/azolet/popcorn-mod |
 
-Fabric API is a required dependency — declare it on the version, or players get a confusing crash
-instead of a clear message.
+Fabric API is a required dependency — add it on the version as the **project**, not as one
+specific version of it, or the release is marked incompatible with every other API build and has
+to be republished each time the API updates. Without the dependency, players get a confusing
+crash instead of a clear message.
+
+`fabric.mod.json` asks for `">=0.141.6"` rather than `"*"`: an older API than the one the mod was
+compiled against fails with a `NoSuchMethodError` deep in a mixin, which tells the player nothing.
+Raise the floor whenever the mod starts using something newer.
 
 ## Release checklist
 

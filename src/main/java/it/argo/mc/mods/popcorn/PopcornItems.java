@@ -57,11 +57,13 @@ public final class PopcornItems {
 
 	// Empty buckets, folded from paper and dyed. Fill one with popcorn to eat it.
 	public static final Item RED_POPCORN_BUCKET = register("red_popcorn_bucket", Item::new, new Item.Properties());
-	public static final Item GREEN_POPCORN_BUCKET = register("green_popcorn_bucket", Item::new, new Item.Properties());
-	public static final Item BLACK_POPCORN_BUCKET = register("black_popcorn_bucket", Item::new, new Item.Properties());
+	// 0.1.0 ships the red bucket only; see PopcornBlocks.
+	// public static final Item GREEN_POPCORN_BUCKET = register("green_popcorn_bucket", Item::new, new Item.Properties());
+	// public static final Item BLACK_POPCORN_BUCKET = register("black_popcorn_bucket", Item::new, new Item.Properties());
 
 	public static final List<Item> EMPTY_BUCKETS = List.of(
-			RED_POPCORN_BUCKET, GREEN_POPCORN_BUCKET, BLACK_POPCORN_BUCKET);
+			RED_POPCORN_BUCKET);
+			// GREEN_POPCORN_BUCKET, BLACK_POPCORN_BUCKET
 
 	private PopcornItems() {
 	}

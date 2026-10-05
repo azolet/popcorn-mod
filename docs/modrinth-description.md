@@ -9,7 +9,7 @@
 
 # Popcorn
 
-You have eleven stacks of wheat seeds and nothing to do with them. Put them in a furnace.
+You have eleven stacks of wheat seeds and nothing to do with them. Put them in a furnace. Yeah, yeah, I know... Normally, you'd need corn seeds to make popcorn. But this is Minecraft, and wheat seeds work just fine!
 
 <!-- SCREENSHOT: a lit furnace mid-pop, wheat seeds in the input slot, popcorn in the output -->
 
